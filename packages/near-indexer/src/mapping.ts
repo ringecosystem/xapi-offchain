@@ -61,9 +61,13 @@ function handlePublish(logs: string[], blockHeader: near.BlockHeader): void {
   if (publishEvent == null) {
     publishEvent = new PublishEvent(`${nanoId}`);
     publishEvent.request_id = request_id;
-    publishEvent.response = request_id;
+    publishEvent.response = nanoId;
     publishEvent.chain_config = nanoId;
     publishEvent.signature = nanoId;
+    publishEvent.nonce = BigInt.fromString(_eventData.mustGet("nonce").toString());
+    publishEvent.gas_limit = BigInt.fromString(_eventData.mustGet("gas_limit").toString());
+    publishEvent.max_fee_per_gas = BigInt.fromString(_eventData.mustGet("max_fee_per_gas").toString());
+    publishEvent.max_priority_fee_per_gas = BigInt.fromString(_eventData.mustGet("max_priority_fee_per_gas").toString());
     publishEvent.save();
   } else {
     log.debug("Publish event already exists: {}", [request_id]);
@@ -131,7 +135,6 @@ function parseResponse(eventData: TypedMap<string, JSONValue>, nanoId: string): 
   response.status = eventData.mustGet("status").toString();
   response.call_data = eventData.get("call_data") ? eventData.mustGet("call_data").toString() : null;
   response.result = eventData.mustGet("result").toString();
-  response.nonce = BigInt.fromString(eventData.mustGet("nonce").toString());
   response.chain_id = BigInt.fromString(eventData.mustGet("chain_id").toString());
   return response;
 }
@@ -142,9 +145,6 @@ function parseChainConfig(eventData: TypedMap<string, JSONValue>, nanoId: string
   const chainConfig = new PublishChainConfig(nanoId);
   chainConfig.chain_id = BigInt.fromString(chainConfigJson.mustGet("chain_id").toString());
   chainConfig.xapi_address = chainConfigJson.mustGet("xapi_address").toString();
-  chainConfig.gas_limit = BigInt.fromString(chainConfigJson.mustGet("gas_limit").toString());
-  chainConfig.max_fee_per_gas = BigInt.fromString(chainConfigJson.mustGet("max_fee_per_gas").toString());
-  chainConfig.max_priority_fee_per_gas = BigInt.fromString(chainConfigJson.mustGet("max_priority_fee_per_gas").toString());
   return chainConfig;
 }
 

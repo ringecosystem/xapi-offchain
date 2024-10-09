@@ -8,7 +8,6 @@ type Response @entity {
   status: String!
   call_data: String
   result: String!
-  nonce: BigInt!
   chain_id: BigInt!
 }
 
@@ -16,9 +15,6 @@ type PublishChainConfig @entity {
   id: ID!
   chain_id: BigInt!
   xapi_address: String!
-  gas_limit: BigInt!
-  max_fee_per_gas: BigInt!
-  max_priority_fee_per_gas: BigInt!
 }
 
 type Signature @entity {
@@ -34,6 +30,10 @@ type PublishEvent @entity {
   response: Response!
   chain_config: PublishChainConfig!
   signature: Signature!
+  nonce: BigInt!
+  gas_limit: BigInt!
+  max_fee_per_gas: BigInt!
+  max_priority_fee_per_gas: BigInt!
 }
 
 type AggregatedEvent @entity {
