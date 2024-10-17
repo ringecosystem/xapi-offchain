@@ -1,0 +1,44 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: XAPI
+    network: sepolia
+    source:
+      address: "0x6984ebE378F8cb815546Cb68a98807C1fA121A81"
+      abi: XAPI
+      startBlock: 6849034
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AggregatorConfigSet
+        - AggregatorSuspended
+        - Fulfilled
+        - OwnershipTransferStarted
+        - OwnershipTransferred
+        - RequestMade
+        - RewardsWithdrawn
+      abis:
+        - name: XAPI
+          file: ./abis/XAPI.json
+      eventHandlers:
+        - event: AggregatorConfigSet(indexed address,uint256,uint256,string,address)
+          handler: handleAggregatorConfigSet
+        - event: AggregatorSuspended(indexed address,indexed string)
+          handler: handleAggregatorSuspended
+        - event: Fulfilled(indexed uint256,(address[],bytes),indexed uint8)
+          handler: handleFulfilled
+        - event: OwnershipTransferStarted(indexed address,indexed address)
+          handler: handleOwnershipTransferStarted
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RequestMade(indexed uint256,string,string,indexed address)
+          handler: handleRequestMade
+        - event: RewardsWithdrawn(indexed address,uint256)
+          handler: handleRewardsWithdrawn
+      file: ./src/xapi.ts

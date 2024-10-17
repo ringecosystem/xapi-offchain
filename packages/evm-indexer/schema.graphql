@@ -1,0 +1,72 @@
+type AggregatorConfigSet @entity(immutable: true) {
+  id: String!
+  exAggregator: String! # address
+  reportersFee: BigInt! # uint256
+  publishFee: BigInt! # uint256
+  aggregator: String! # string
+  rewardAddress: String! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+}
+
+type AggregatorSuspended @entity(immutable: true) {
+  id: String!
+  exAggregator: String! # address
+  aggregator: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+}
+
+type Fulfilled @entity(immutable: true) {
+  id: String!
+  requestId: BigInt! # uint256
+  response_reporters: [String!]! # address[]
+  response_result: String! # String
+  status: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+}
+
+type OwnershipTransferStarted @entity(immutable: true) {
+  id: String!
+  previousOwner: String! # address
+  newOwner: String! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: String!
+  previousOwner: String! # address
+  newOwner: String! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+}
+
+type RequestMade @entity {
+  id: String!
+  requestId: BigInt! # uint256
+  aggregator: String! # string
+  requestData: String! # string
+  requester: String! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+
+  xapiAddress: String!
+  fulfilled: Int!
+}
+
+type RewardsWithdrawn @entity(immutable: true) {
+  id: String!
+  withdrawer: String! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+}
