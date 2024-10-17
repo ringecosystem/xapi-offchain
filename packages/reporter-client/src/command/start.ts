@@ -128,7 +128,6 @@ export class XAPIExporterStarter {
     console.log("------>", topStaked);
 
 
-
     // const reporterRequired: Record<string, any> = {};
     // for (const todo of possibleTodos) {
     //   if (reporterRequired[todo.aggregator]) continue;
