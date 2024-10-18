@@ -1,0 +1,36 @@
+{
+  "name": "@ringdao/xapi-common",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts --fix",
+    "posttest": "yarn lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
+  },
+  "dependencies": {
+    "@stdlib/string-pad": "^0",
+    "chalk": "^4",
+    "near-api-js": "^5.0.0",
+    "winston": "^3",
+    "axios": "^1.7.7"
+  },
+  "devDependencies": {
+    "@types/jest": "^29",
+    "@types/node": "^20",
+    "@typescript-eslint/eslint-plugin": "^5",
+    "@typescript-eslint/parser": "^5",
+    "eslint": "^8",
+    "jest": "^29",
+    "shx": "^0.3",
+    "ts-node": "^10",
+    "tslib": "^2",
+    "typescript": "^5"
+  }
+}

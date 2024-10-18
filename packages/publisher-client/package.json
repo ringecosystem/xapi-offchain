@@ -1,0 +1,35 @@
+{
+  "name": "@ringdao/xapi-publisher-client",
+  "version": "0.0.1",
+  "main": "dist/main.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "start": "yarn build && node dist/main.js start"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "shx": "^0.3.4",
+    "ts-node": "^10",
+    "tslib": "^2",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@ethereumjs/common": "^4.4.0",
+    "@ethereumjs/tx": "^5.4.0",
+    "@ethereumjs/util": "^9.1.0",
+    "@helixbridge/helixconf": "^1.1.16",
+    "@ringdao/xapi-common": "0.0.1",
+    "bs58check": "^4.0.0",
+    "commander": "^12.1.0",
+    "elliptic": "^6.5.7",
+    "ethers": "^6.13.3",
+    "hash.js": "^1.1.7",
+    "js-sha3": "^0.9.3",
+    "near-api-js": "^5.0.1",
+    "reflect-metadata": "^0.2.2",
+    "typedi": "^0.10.0",
+    "viem": "^2.21.28",
+    "web3": "^4.13.0"
+  }
+}

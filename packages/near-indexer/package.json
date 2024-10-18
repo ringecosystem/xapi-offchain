@@ -1,6 +1,6 @@
 {
-  "name": "xapi-near",
-  "version": "0.1.0",
+  "name": "@ringdao/xapi-indexer-near",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "graph codegen && graph build",
@@ -11,7 +11,7 @@
     "deploy-local": "graph deploy xapi-near --ipfs http://localhost:5001 --node http://127.0.0.1:8020"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "0.71.2",
+    "@graphprotocol/graph-cli": "0.84.0",
     "@graphprotocol/graph-ts": "0.35.1"
   }
 }
